@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h3>Upload & Encrypt File</h3>
+
+<form action="/upload" method="POST" enctype="multipart/form-data">
+    <input type="file" name="file" class="form-control" required>
+    <button class="btn btn-primary mt-2">Upload</button>
+</form>
+
+<hr>
+
+<h3>Encrypted Files</h3>
+<ul class="list-group">
+    {% for file in files %}
+        <li class="list-group-item">
+            {{ file }}
+            <a class="btn btn-success btn-sm float-end"
+               href="/download/{{ file }}">Download (Decrypt)</a>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}
